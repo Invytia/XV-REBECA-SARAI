@@ -50,9 +50,9 @@ body.content-active .sticky-music-btn{opacity:1;visibility:visible;transform:non
 #main-invitation{display:none;width:100%;flex-direction:column;align-items:center;opacity:0;animation:fadeInMain 2s forwards .3s;position:relative}
 body.content-active #main-invitation{display:flex}
 @keyframes fadeInMain{to{opacity:1}}
-.anim-element{opacity:0;transition:all 1.2s var(--ease);position:relative;z-index:2}
-.anim-fade-up{transform:translateY(50px)}
-.anim-fade-up.in-view{opacity:1;transform:none}
+.anim-element{opacity:0;transition:opacity 1.5s ease,transform 1.7s var(--ease),filter 1.5s ease;position:relative;z-index:2}
+.anim-fade-up{transform:translateY(44px);filter:blur(6px)}
+.anim-fade-up.in-view{opacity:1;transform:none;filter:none}
 .anim-zoom{transform:scale(.9);filter:blur(5px)}
 .anim-zoom.in-view{opacity:1;transform:none;filter:none}
 .anim-glow.in-view{animation:softGlow 3s infinite alternate}
@@ -101,9 +101,11 @@ body.content-active #main-invitation{display:flex}
 .map-box iframe{width:100%;height:100%;border:none}
 
 /* Itinerario */
-.timeline{width:100%;max-width:420px;margin:30px auto 0;position:relative;z-index:2;text-align:left;border-left:1px solid rgba(233,163,184,.5);padding-left:26px}
-.tl-item{position:relative;padding:0 0 26px}
-.tl-item::before{content:'';position:absolute;left:-32px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--rose);box-shadow:0 0 12px var(--rose-glow)}
+.timeline{width:100%;max-width:420px;margin:30px auto 0;position:relative;z-index:2;text-align:left}
+.timeline::before{content:'';position:absolute;left:22px;top:24px;bottom:24px;width:1px;background:linear-gradient(to bottom,transparent,var(--rose),transparent)}
+.tl-item{display:flex;align-items:center;gap:18px;padding:0 0 22px;position:relative}
+.tl-ico{flex:0 0 46px;height:46px;border-radius:50%;background:rgba(20,38,30,.75);border:1px solid rgba(233,163,184,.55);display:flex;align-items:center;justify-content:center;color:var(--rose);box-shadow:0 0 18px rgba(233,163,184,.35);backdrop-filter:blur(4px)}
+.tl-ico svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .tl-time{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-spacing:2px}
 .tl-text{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--text)}
 
@@ -118,6 +120,45 @@ select.input-line option{background:#1b2b23;color:var(--text)}
 
 .ticket-card{width:100%;max-width:380px;margin:30px auto;background:linear-gradient(135deg,rgba(30,50,40,.85),rgba(16,28,22,.92));padding:50px 25px;text-align:center;border-radius:15px;box-shadow:0 20px 50px rgba(0,0,0,.8),0 0 30px rgba(233,163,184,.2);border:1px solid rgba(233,163,184,.45);position:relative;z-index:2;backdrop-filter:blur(15px)}
 
+/* Efectos especiales */
+.shine{background:linear-gradient(100deg,var(--rose) 20%,#fff 40%,var(--gold) 50%,#fff 60%,var(--rose) 80%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;text-shadow:none;animation:shimmer 6s linear infinite}
+@keyframes shimmer{to{background-position:-250% 0}}
+.btn-solid{overflow:hidden}
+.btn-solid::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);animation:sweep 4.5s infinite}
+@keyframes sweep{0%,55%{left:-60%}100%{left:130%}}
+.petal{position:absolute;top:-30px;width:14px;height:11px;background:linear-gradient(135deg,#fde0e9,#E9A3B8);border-radius:150% 0 150% 0;opacity:.85;box-shadow:0 0 8px rgba(233,163,184,.6);animation:petalFall linear infinite}
+@keyframes petalFall{0%{transform:translate3d(0,-5vh,0) rotate(0)}50%{transform:translate3d(60px,55vh,0) rotate(200deg)}100%{transform:translate3d(-20px,112vh,0) rotate(420deg)}}
+.spark{position:fixed;width:6px;height:6px;border-radius:50%;background:#ffe3ec;box-shadow:0 0 10px 3px var(--rose);pointer-events:none;z-index:3000;animation:sparkOut .9s ease-out forwards}
+@keyframes sparkOut{to{transform:translate(var(--dx),var(--dy)) scale(0);opacity:0}}
+.photo-frame.anim-element{transform:translateY(50px) scale(.94);filter:blur(8px)}
+.photo-frame.in-view{opacity:1;transform:none;filter:none;animation:frameGlow 5s ease-in-out 1.8s infinite}
+@keyframes frameGlow{0%,100%{box-shadow:0 20px 50px rgba(0,0,0,.8),0 0 30px rgba(233,163,184,.2)}50%{box-shadow:0 20px 50px rgba(0,0,0,.8),0 0 55px rgba(233,163,184,.55)}}
+
+/* Pergamino */
+.scroll{width:100%;max-width:560px;position:relative;z-index:2}
+.scroll-in{filter:drop-shadow(0 18px 24px rgba(0,0,0,.55))}
+.roll{height:30px;margin:0 -14px;border-radius:15px;position:relative;z-index:2;background:linear-gradient(#a57a42 0%,#e9cf9b 28%,#f9ecc8 50%,#d6b678 74%,#8f6630 100%)}
+.roll::before,.roll::after{content:'';position:absolute;top:4px;bottom:4px;width:9px;border-radius:50%;background:radial-gradient(#6b4520,#b98d52)}
+.roll::before{left:3px}.roll::after{right:3px}
+.paper-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows 2.8s var(--ease)}
+.scroll.in-view .paper-wrap{grid-template-rows:1fr}
+.paper{min-height:0;overflow:hidden;background:radial-gradient(ellipse at 18% 12%,rgba(160,110,50,.2),transparent 45%),radial-gradient(ellipse at 86% 82%,rgba(140,95,40,.24),transparent 50%),linear-gradient(90deg,#dfc088 0%,#f6e8c6 12%,#faefd2 50%,#f6e8c6 88%,#d9b97c 100%)}
+.paper-in{padding:38px 32px 34px;opacity:0;transition:opacity 1.8s ease 1.5s}
+.scroll.in-view .paper-in{opacity:1}
+.paper-in p{font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.75;font-style:italic;color:#4a2f1b;font-weight:500}
+.sign{font-family:'Pinyon Script',cursive;font-size:44px;color:#8a4b5e;margin-top:18px;line-height:1}
+
+/* Intro en video */
+#intro-screen{position:fixed;inset:0;z-index:1500;background:#000;transition:opacity 1.4s ease,visibility 1.4s}
+#intro-screen video{width:100%;height:100%;object-fit:cover;display:block}
+#intro-screen .white{position:absolute;inset:0;background:#fff;opacity:0;transition:opacity 1.2s ease;pointer-events:none}
+#intro-screen.to-white .white{opacity:1}
+#intro-screen.fade-out{opacity:0;visibility:hidden;pointer-events:none}
+.skip-intro{position:absolute;bottom:24px;right:20px;z-index:3;background:rgba(0,0,0,.35);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:9px 18px;font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;cursor:pointer}
+
+/* Spotify */
+.spotify-box{width:100%;max-width:520px;margin:30px auto 0;position:relative;z-index:2;border-radius:12px;box-shadow:0 15px 40px rgba(0,0,0,.6)}
+.spotify-box iframe{display:block}
 @media(max-width:400px){
   .env-title{font-size:55px}.title-script{font-size:60px}.section-block{padding:90px 15px}.info-data{font-size:28px}
   .countdown-container{gap:10px}.time-box{min-width:60px;padding:12px 5px}.time-box span{font-size:22px}.map-box{height:260px}
@@ -125,7 +166,7 @@ select.input-line option{background:#1b2b23;color:var(--text)}
   .envelope::before,.envelope::after{border-left-width:150px;border-right-width:150px;border-top-width:97px;border-bottom-width:97px}
   .front-flap{border-left-width:150px;border-right-width:150px;border-top-width:105px}
 }
-@media(prefers-reduced-motion:reduce){.anim-element{transition:none;opacity:1;transform:none;filter:none}.firefly{animation:none}}
+@media(prefers-reduced-motion:reduce){.anim-element{transition:none;opacity:1;transform:none;filter:none}.firefly,.petal,.shine,.btn-solid::after{animation:none}}
 </style>
 </head>
 <body>
@@ -136,6 +177,12 @@ select.input-line option{background:#1b2b23;color:var(--text)}
   <svg id="music-icon-play" style="display:none" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
   <svg id="music-icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
 </button>
+
+<div id="intro-screen">
+  <video id="intro-video" src="assets/entrada.mp4" autoplay muted playsinline preload="auto"></video>
+  <div class="white"></div>
+  <button class="skip-intro" onclick="endIntro()">Saltar</button>
+</div>
 
 <div id="envelope-screen">
   <div class="envelope-text-container">
@@ -171,7 +218,7 @@ select.input-line option{background:#1b2b23;color:var(--text)}
   <!-- Fecha, contador, calendario + foto 3 -->
   <section class="section-block bg-1">
     <div class="anim-element anim-fade-up delay-1 info-title" style="letter-spacing:2px">Únete a mi noche encantada el</div>
-    <div class="anim-element anim-fade-up delay-2 info-data" style="font-size:40px;font-weight:500;color:var(--rose)">11 de Diciembre</div>
+    <div class="anim-element anim-fade-up delay-2 info-data shine" style="font-size:40px;font-weight:500">11 de Diciembre</div>
     <div class="anim-element anim-fade-up delay-3 info-data" style="font-size:24px;color:var(--gold);letter-spacing:2px">2026</div>
 
     <div class="anim-element anim-fade-up delay-4 countdown-container">
@@ -214,16 +261,7 @@ select.input-line option{background:#1b2b23;color:var(--text)}
   <section class="section-block bg-1">
     <div class="anim-element anim-fade-up delay-1 info-title">Programa de la Noche</div>
     <div class="anim-element anim-fade-up delay-2 info-data" style="font-size:34px">Itinerario</div>
-    <div class="timeline anim-element anim-fade-up delay-3">
-      <div class="tl-item"><div class="tl-time">8:30 PM</div><div class="tl-text">Ceremonia</div></div>
-      <div class="tl-item"><div class="tl-time">9:00 PM</div><div class="tl-text">Recepción</div></div>
-      <div class="tl-item"><div class="tl-time">9:30 PM</div><div class="tl-text">Entrada de la quinceañera</div></div>
-      <div class="tl-item"><div class="tl-time">10:00 PM</div><div class="tl-text">Vals y brindis</div></div>
-      <div class="tl-item"><div class="tl-time">10:30 PM</div><div class="tl-text">Cena</div></div>
-      <div class="tl-item"><div class="tl-time">11:40 PM</div><div class="tl-text">Apertura de pista</div></div>
-      <div class="tl-item"><div class="tl-time">12:30 AM</div><div class="tl-text">Corte del pastel</div></div>
-      <div class="tl-item" style="padding-bottom:0"><div class="tl-time">3:00 AM</div><div class="tl-text">Fin del evento</div></div>
-    </div>
+    <div class="timeline" id="timeline"></div>
     <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top:70px"><img src="assets/4.jpg" alt="Rebeca Sarai" onerror="this.parentElement.style.display='none'"></div>
   </section>
 
@@ -238,18 +276,20 @@ select.input-line option{background:#1b2b23;color:var(--text)}
   <!-- Mesa de regalos -->
   <section class="section-block bg-1">
     <div class="anim-element anim-fade-up delay-1 info-title">Mesa de Regalos</div>
-    <div class="anim-element anim-fade-up delay-2 info-data" style="font-size:36px;color:var(--rose)">Lluvia de Sobres</div>
+    <div class="anim-element anim-fade-up delay-2 info-data shine" style="font-size:36px">Lluvia de Sobres</div>
     <p class="anim-element anim-fade-up delay-3 body-serif" style="margin-top:25px;font-size:21px">El regalo más hermoso es tu presencia. Si deseas tener un detalle conmigo, habrá un cofre en la recepción para tu lluvia de sobres.</p>
   </section>
 
   <!-- Mensaje + foto 5 -->
   <section class="section-block bg-2">
-    <div class="anim-element anim-zoom delay-1">
-      <svg viewBox="0 0 24 24" style="width:50px;height:50px;fill:var(--rose);margin-bottom:20px;filter:drop-shadow(0 0 15px var(--rose-glow))"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-    </div>
-    <p class="anim-element anim-fade-up delay-2 body-serif" style="font-size:25px;line-height:1.8;padding:25px;border:1px solid rgba(233,163,184,.35);border-radius:12px;background:rgba(14,28,22,.6);backdrop-filter:blur(10px);box-shadow:0 10px 30px rgba(0,0,0,.5)">
-      “Hace quince años comenzó mi historia, y hoy quiero celebrar la vida rodeada de las personas que más amo. Gracias a mis padres por ser mi ejemplo y mi mayor fortaleza, y a ti por ser parte de mi camino. Tu presencia hará que esta noche sea perfecta.”
-    </p>
+    <div class="anim-element anim-fade-up delay-1 scroll"><div class="scroll-in">
+      <div class="roll"></div>
+      <div class="paper-wrap"><div class="paper"><div class="paper-in">
+        <p>“Hace quince años comenzó mi historia, y hoy quiero celebrar la vida rodeada de las personas que más amo. Gracias a mis padres por ser mi ejemplo y mi mayor fortaleza, y a ti por ser parte de mi camino. Tu presencia hará que esta noche sea perfecta.”</p>
+        <div class="sign">Rebeca Sarai</div>
+      </div></div></div>
+      <div class="roll"></div>
+    </div></div>
     <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top:70px"><img src="assets/5.jpg" alt="Rebeca Sarai" onerror="this.parentElement.style.display='none'"></div>
   </section>
 
@@ -261,8 +301,19 @@ select.input-line option{background:#1b2b23;color:var(--text)}
     <a href="https://drive.google.com/drive/folders/1KJ52lGQAj2wLuSVjMwx7zAOI95rmoUeW?usp=sharing" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Subir mis Fotos</a>
   </section>
 
-  <!-- RSVP y pases -->
+  <!-- Spotify -->
   <section class="section-block bg-2">
+    <div class="anim-element anim-fade-up delay-1 info-title">Música de la Noche</div>
+    <div class="anim-element anim-fade-up delay-2 info-data">Playlist de la Fiesta</div>
+    <p class="anim-element anim-fade-up delay-3 body-serif" style="margin:20px auto 0;font-size:20px">Ayúdame a armar la música de la noche: agrega las canciones que no pueden faltar.</p>
+    <div class="anim-element anim-zoom delay-4 spotify-box">
+      <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6WCYEn4HQck2rO0F5XTbAf?utm_source=generator&si=2bad3f56c4c04739" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Playlist de Spotify"></iframe>
+    </div>
+    <a href="https://open.spotify.com/playlist/6WCYEn4HQck2rO0F5XTbAf?si=72289892dcf34a75&pt=04828daa685142a1413a4035a7267145" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Agregar mis canciones</a>
+  </section>
+
+  <!-- RSVP y pases -->
+  <section class="section-block bg-1">
     <div id="pases-section" style="display:none;width:100%">
       <div class="anim-element anim-fade-up delay-1 info-title">Tu Pase al Bosque Encantado</div>
       <div class="anim-element anim-zoom delay-2 ticket-card">
@@ -351,7 +402,7 @@ function openEnvelope(){
   setTimeout(() => {
     document.getElementById('envelope-screen').classList.add('fade-out');
     document.body.classList.add('content-active');
-    createFireflies();
+    createFireflies(); createPetals();
     bgMusic.play().then(() => { isMusicPlaying = true; setIcons(true); })
       .catch(() => { isMusicPlaying = false; setIcons(false); });
   }, 1000);
@@ -376,6 +427,68 @@ const timer = setInterval(() => {
   set('minutes', Math.floor(dist % 36e5 / 6e4));
   set('seconds', Math.floor(dist % 6e4 / 1e3));
 }, 1000);
+
+// Itinerario con iconos
+const ICONS = {
+  church:'M12 2v4M10 4h4M12 6l-5 4v11h10V10l-5-4zM10 21v-5a2 2 0 0 1 4 0v5',
+  spark:'M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z',
+  crown:'M3 18h18M4 18L3 7l5 4 4-6 4 6 5-4-1 11',
+  glass:'M8 3h8l-.7 6a3.3 3.3 0 0 1-6.6 0L8 3zM12 12v8M8.5 20h7',
+  dinner:'M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 21V3c-2 1-3 4-3 8h3',
+  music:'M9 18V5l11-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM20 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z',
+  cake:'M4 21h16M5 21v-7h14v7M5 17c2 1.5 3 1.5 5 0s3-1.5 5 0 3 1.5 4 0M12 14V9M12 9c-1-1-1-2 0-3 1 1 1 2 0 3z',
+  moon:'M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z'
+};
+const PROGRAMA = [
+  ['8:30 PM','Ceremonia','church'],['9:00 PM','Recepción','spark'],['9:30 PM','Entrada de la quinceañera','crown'],
+  ['10:00 PM','Vals y brindis','glass'],['10:30 PM','Cena','dinner'],['11:40 PM','Apertura de pista','music'],
+  ['12:30 AM','Corte del pastel','cake'],['3:00 AM','Fin del evento','moon']
+];
+document.getElementById('timeline').innerHTML = PROGRAMA.map(([t,x,i],n) =>
+  `<div class="tl-item anim-element anim-zoom" style="transition-delay:${n*.1}s"><div class="tl-ico"><svg viewBox="0 0 24 24"><path d="${ICONS[i]}"/></svg></div><div><div class="tl-time">${t}</div><div class="tl-text">${x}</div></div></div>`).join('');
+
+// Pétalos
+function createPetals(){
+  const c = document.getElementById('fireflies');
+  for (let i = 0; i < 22; i++){
+    const e = document.createElement('div');
+    e.className = 'petal';
+    e.style.left = Math.random()*100 + 'vw';
+    e.style.transform = `scale(${0.7 + Math.random()*0.9})`;
+    e.style.animationDuration = (10 + Math.random()*10) + 's';
+    e.style.animationDelay = (-Math.random()*18) + 's';
+    c.appendChild(e);
+  }
+}
+
+// Destellos al tocar
+document.addEventListener('pointerdown', ev => {
+  for (let i = 0; i < 8; i++){
+    const sp = document.createElement('div');
+    sp.className = 'spark';
+    sp.style.left = ev.clientX + 'px'; sp.style.top = ev.clientY + 'px';
+    const a = Math.random()*6.28, d = 30 + Math.random()*40;
+    sp.style.setProperty('--dx', Math.cos(a)*d + 'px'); sp.style.setProperty('--dy', Math.sin(a)*d + 'px');
+    document.body.appendChild(sp); setTimeout(() => sp.remove(), 900);
+  }
+});
+
+// Video de entrada -> fundido a blanco -> sobre
+const intro = document.getElementById('intro-screen');
+const introVideo = document.getElementById('intro-video');
+let introDone = false;
+function endIntro(){
+  if (introDone) return; introDone = true;
+  intro.classList.add('to-white');
+  setTimeout(() => { intro.classList.add('fade-out'); setTimeout(() => intro.remove(), 1500); }, 1200);
+}
+function skipIntro(){
+  if (introDone) return; introDone = true;
+  intro.classList.add('fade-out'); setTimeout(() => intro.remove(), 1500);
+}
+introVideo.addEventListener('ended', endIntro);
+introVideo.addEventListener('error', skipIntro);
+const pr = introVideo.play(); if (pr) pr.catch(skipIntro);
 
 // Pases: ?id=1  |  ?p=4  |  sin parámetros = 10
 let pasesAsignados = 0, nombreInvitado = "Invitado Especial";
