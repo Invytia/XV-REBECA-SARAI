@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Pinyon+Script&family=Montserrat:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg-dark:rgba(18,32,26,.86);--bg-light:rgba(30,46,38,.86);
+  --bg-dark:rgba(18,32,26,.32);--bg-light:rgba(30,46,38,.26);
   --rose:#E9A3B8;--rose-glow:rgba(233,163,184,.65);
   --sage:#B9D4B0;--gold:#F3DCC0;
   --text:#FDF3F6;--muted:#C9D6C8;
@@ -18,8 +18,8 @@ body,html{width:100%;font-family:'Montserrat',sans-serif;background:#101c16;colo
 body::before{content:'';position:fixed;inset:0;z-index:0;background:#101c16 url('assets/fondo.jpg') center top/auto 100% no-repeat}
 
 .firefly-container{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
-.firefly{position:absolute;background:#fff;border-radius:50%;opacity:0;box-shadow:0 0 12px 3px var(--sage);animation:flicker 4s infinite,drift 20s infinite linear}
-@keyframes flicker{0%,100%{opacity:0}50%{opacity:.9;box-shadow:0 0 18px 5px var(--rose)}}
+.firefly{position:absolute;background:#ffe3ec;border-radius:50%;opacity:0;box-shadow:0 0 14px 4px var(--rose);animation:flicker 4s infinite,drift 20s infinite linear}
+@keyframes flicker{0%,100%{opacity:0}50%{opacity:1;box-shadow:0 0 24px 8px var(--rose)}}
 @keyframes drift{0%{transform:translateY(110vh) translateX(0)}100%{transform:translateY(-10vh) translateX(100px)}}
 
 .sticky-music-btn{position:fixed;bottom:30px;right:30px;width:50px;height:50px;background:var(--rose);border-radius:50%;display:flex;justify-content:center;align-items:center;box-shadow:0 0 25px var(--rose-glow);z-index:2000;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(20px) scale(.9);transition:all .6s var(--ease);border:1px solid rgba(255,255,255,.4);outline:none}
@@ -28,7 +28,7 @@ body.content-active .sticky-music-btn{opacity:1;visibility:visible;transform:non
 .sticky-music-btn svg{width:18px;height:18px;fill:#fff}
 
 #envelope-screen{position:fixed;inset:0;background:#101c16 url('assets/fondo.jpg') center top/auto 100% no-repeat;z-index:1000;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity 1.2s,visibility 1.2s}
-#envelope-screen::before{content:'';position:absolute;inset:0;background:rgba(14,28,22,.62);backdrop-filter:blur(3px);z-index:1}
+#envelope-screen::before{content:'';position:absolute;inset:0;background:rgba(14,28,22,.18);z-index:1}
 #envelope-screen.fade-out{opacity:0;visibility:hidden;pointer-events:none}
 .envelope-text-container{text-align:center;margin-bottom:50px;animation:floatText 4s ease-in-out infinite;position:relative;z-index:10}
 .env-tag{font-family:'Cinzel',serif;font-size:14px;letter-spacing:8px;text-transform:uppercase;color:var(--gold);text-shadow:0 0 15px rgba(243,220,192,.6)}
@@ -59,7 +59,7 @@ body.content-active #main-invitation{display:flex}
 @keyframes softGlow{from{text-shadow:0 0 10px rgba(233,163,184,.3)}to{text-shadow:0 0 25px rgba(233,163,184,.9)}}
 .delay-1{transition-delay:.1s}.delay-2{transition-delay:.3s}.delay-3{transition-delay:.5s}.delay-4{transition-delay:.7s}
 
-.section-block{width:100%;padding:110px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.section-block{width:100%;padding:110px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
 .bg-1{background:var(--bg-dark);border-bottom:1px solid rgba(233,163,184,.12)}
 .bg-2{background:var(--bg-light);border-bottom:1px solid rgba(233,163,184,.12)}
 
@@ -68,7 +68,7 @@ body.content-active #main-invitation{display:flex}
 
 .tag-line{font-family:'Cinzel',serif;font-size:14px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:25px;font-weight:500}
 .title-script{font-family:'Pinyon Script',cursive;font-size:85px;color:var(--rose);margin-bottom:20px;line-height:1.1;text-shadow:0 3px 18px rgba(0,0,0,.6)}
-.body-serif{font-family:'Cormorant Garamond',serif;font-size:23px;line-height:1.6;color:var(--text);font-style:italic;max-width:600px;padding:0 15px;text-shadow:0 2px 4px rgba(0,0,0,.5)}
+.body-serif{font-family:'Cormorant Garamond',serif;font-size:23px;line-height:1.6;color:var(--text);font-style:italic;max-width:600px;padding:0 15px;text-shadow:0 2px 8px rgba(0,0,0,.9)}
 .line-divider{width:1px;height:70px;background:linear-gradient(to bottom,transparent,var(--rose),transparent);margin:35px auto}
 .line-horizontal{width:80px;height:1px;background:linear-gradient(to right,transparent,var(--rose),transparent);margin:50px auto}
 .amp{font-family:'Cinzel',serif;font-size:20px;color:var(--gold);margin:15px 0}
@@ -78,7 +78,8 @@ body.content-active #main-invitation{display:flex}
 .photo-frame img{width:100%;height:auto;display:block;border-radius:6px}
 
 .info-title{font-family:'Cinzel',serif;font-size:14px;letter-spacing:4px;line-height:1.4;text-transform:uppercase;color:var(--gold);margin-bottom:15px;font-weight:500}
-.info-data{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--text);margin-bottom:5px;line-height:1.3;text-shadow:0 2px 4px rgba(0,0,0,.5)}
+.info-data{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--text);margin-bottom:5px;line-height:1.3;text-shadow:0 2px 8px rgba(0,0,0,.85)}
+.info-title,.tag-line,.place-sub,.tl-time,.tl-text{text-shadow:0 2px 8px rgba(0,0,0,.85)}
 .place-sub{font-family:'Cinzel',serif;font-size:15px;letter-spacing:2px;color:var(--sage);margin:10px 0}
 
 .countdown-container{display:flex;justify-content:center;gap:15px;margin:40px auto;position:relative;z-index:2}
@@ -154,8 +155,8 @@ select.input-line option{background:#1b2b23;color:var(--text)}
 
   <!-- HERO (foto 1 de fondo) -->
   <section class="section-block hero">
-    <div class="anim-element anim-fade-up delay-1 tag-line" style="margin-bottom:8px">Mis XV Años</div>
-    <h1 class="anim-element anim-zoom anim-glow delay-2 title-script" style="margin-bottom:0;font-size:clamp(50px,15vw,68px)">Rebeca Sarai</h1>
+    <div class="anim-element anim-fade-up delay-1 tag-line" style="margin-bottom:10px;font-size:clamp(16px,4.5vw,22px);letter-spacing:7px">Mis XV Años</div>
+    <h1 class="anim-element anim-zoom anim-glow delay-2 title-script" style="margin-bottom:0;font-size:clamp(66px,21vw,110px)">Rebeca Sarai</h1>
       </section>
 
   <!-- Padres + foto 2 -->
@@ -321,12 +322,12 @@ document.querySelectorAll('.gmap').forEach(f => f.src = MAP_SRC);
 // Luciérnagas
 function createFireflies(){
   const c = document.getElementById('fireflies');
-  for (let i = 0; i < 35; i++){
+  for (let i = 0; i < 90; i++){
     const f = document.createElement('div');
     f.className = 'firefly';
     f.style.left = Math.random()*100 + 'vw';
     f.style.top = Math.random()*120 + 'vh';
-    f.style.width = f.style.height = (Math.random()*3 + 1) + 'px';
+    f.style.width = f.style.height = (Math.random()*4 + 2) + 'px';
     f.style.animationDelay = (Math.random()*5) + 's';
     f.style.animationDuration = (Math.random()*2 + 2) + 's, ' + (Math.random()*15 + 15) + 's';
     c.appendChild(f);
