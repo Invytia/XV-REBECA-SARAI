@@ -15,7 +15,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body,html{width:100%;font-family:'Montserrat',sans-serif;background:#101c16;color:var(--text);overflow-x:hidden;scroll-behavior:smooth}
-body{background-image:url('assets/fondo.jpg');background-size:cover;background-position:center;background-attachment:fixed}
+body::before{content:'';position:fixed;inset:0;z-index:0;background:#101c16 url('assets/fondo.jpg') center top/auto 100% no-repeat}
 
 .firefly-container{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
 .firefly{position:absolute;background:#fff;border-radius:50%;opacity:0;box-shadow:0 0 12px 3px var(--sage);animation:flicker 4s infinite,drift 20s infinite linear}
@@ -27,7 +27,7 @@ body.content-active .sticky-music-btn{opacity:1;visibility:visible;transform:non
 .sticky-music-btn:hover{transform:scale(1.1)}
 .sticky-music-btn svg{width:18px;height:18px;fill:#fff}
 
-#envelope-screen{position:fixed;inset:0;background:url('assets/fondo.jpg') center/cover;z-index:1000;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity 1.2s,visibility 1.2s}
+#envelope-screen{position:fixed;inset:0;background:#101c16 url('assets/fondo.jpg') center top/auto 100% no-repeat;z-index:1000;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity 1.2s,visibility 1.2s}
 #envelope-screen::before{content:'';position:absolute;inset:0;background:rgba(14,28,22,.62);backdrop-filter:blur(3px);z-index:1}
 #envelope-screen.fade-out{opacity:0;visibility:hidden;pointer-events:none}
 .envelope-text-container{text-align:center;margin-bottom:50px;animation:floatText 4s ease-in-out infinite;position:relative;z-index:10}
@@ -64,7 +64,7 @@ body.content-active #main-invitation{display:flex}
 .bg-2{background:var(--bg-light);border-bottom:1px solid rgba(233,163,184,.12)}
 
 /* HERO con foto 1 de fondo */
-.hero{min-height:100vh;justify-content:flex-end;padding:0 20px 90px;background:linear-gradient(to top,rgba(14,28,22,.92) 0%,rgba(14,28,22,.35) 45%,rgba(14,28,22,.1) 100%),url('assets/1.jpg') center top/cover no-repeat;backdrop-filter:none;-webkit-backdrop-filter:none}
+.hero{min-height:100vh;justify-content:flex-end;padding:0 20px 28px;background:linear-gradient(to top,rgba(14,28,22,.92) 0%,rgba(14,28,22,.35) 45%,rgba(14,28,22,.1) 100%),url('assets/1.jpg') center top/cover no-repeat;backdrop-filter:none;-webkit-backdrop-filter:none}
 
 .tag-line{font-family:'Cinzel',serif;font-size:14px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:25px;font-weight:500}
 .title-script{font-family:'Pinyon Script',cursive;font-size:85px;color:var(--rose);margin-bottom:20px;line-height:1.1;text-shadow:0 3px 18px rgba(0,0,0,.6)}
@@ -154,10 +154,9 @@ select.input-line option{background:#1b2b23;color:var(--text)}
 
   <!-- HERO (foto 1 de fondo) -->
   <section class="section-block hero">
-    <div class="anim-element anim-fade-up delay-1 tag-line">Mis XV Años</div>
-    <h1 class="anim-element anim-zoom anim-glow delay-2 title-script">Rebeca Sarai</h1>
-    <div class="anim-element anim-fade-up delay-3 line-divider" style="margin-bottom:0"></div>
-  </section>
+    <div class="anim-element anim-fade-up delay-1 tag-line" style="margin-bottom:8px">Mis XV Años</div>
+    <h1 class="anim-element anim-zoom anim-glow delay-2 title-script" style="margin-bottom:0;font-size:clamp(50px,15vw,68px)">Rebeca Sarai</h1>
+      </section>
 
   <!-- Padres + foto 2 -->
   <section class="section-block bg-2">
