@@ -156,6 +156,8 @@ select.input-line option{background:#1b2b23;color:var(--text)}
 #intro-screen.fade-out{opacity:0;visibility:hidden;pointer-events:none}
 .skip-intro{position:absolute;bottom:24px;right:20px;z-index:3;background:rgba(0,0,0,.35);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:9px 18px;font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;cursor:pointer}
 
+.start-intro{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer;background:linear-gradient(rgba(14,28,22,.35),rgba(14,28,22,.35)),#101c16 url('assets/fondo.jpg') center top/auto 100% no-repeat;transition:opacity .6s ease}
+.start-intro.hide{opacity:0;pointer-events:none}
 /* Spotify */
 .spotify-box{width:100%;max-width:520px;margin:30px auto 0;position:relative;z-index:2;border-radius:12px;box-shadow:0 15px 40px rgba(0,0,0,.6)}
 .spotify-box iframe{display:block}
@@ -179,9 +181,14 @@ select.input-line option{background:#1b2b23;color:var(--text)}
 </button>
 
 <div id="intro-screen">
-  <video id="intro-video" src="assets/entrada.mp4" autoplay muted playsinline preload="auto"></video>
+  <video id="intro-video" src="assets/entrada.mp4" playsinline preload="auto"></video>
   <div class="white"></div>
-  <button class="skip-intro" onclick="endIntro()">Saltar</button>
+  <button class="skip-intro" id="skip-btn" style="display:none" onclick="endIntro()">Saltar</button>
+  <div class="start-intro" id="start-intro" onclick="startIntro()">
+    <div class="env-tag">Mis XV Años</div>
+    <h1 class="env-title">Rebeca Sarai</h1>
+    <div class="hint-text">Toca para comenzar</div>
+  </div>
 </div>
 
 <div id="envelope-screen">
@@ -488,7 +495,13 @@ function skipIntro(){
 }
 introVideo.addEventListener('ended', endIntro);
 introVideo.addEventListener('error', skipIntro);
-const pr = introVideo.play(); if (pr) pr.catch(skipIntro);
+// El navegador solo permite audio tras un toque del usuario
+function startIntro(){
+  document.getElementById('start-intro').classList.add('hide');
+  document.getElementById('skip-btn').style.display = 'block';
+  introVideo.muted = false;
+  introVideo.play().catch(() => { introVideo.muted = true; introVideo.play().catch(skipIntro); });
+}
 
 // Pases: ?id=1  |  ?p=4  |  sin parámetros = 10
 let pasesAsignados = 0, nombreInvitado = "Invitado Especial";
