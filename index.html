@@ -64,7 +64,7 @@ body.content-active #main-invitation{display:flex}
 .bg-2{background:var(--bg-light);border-bottom:1px solid rgba(233,163,184,.12)}
 
 /* HERO con foto 1 de fondo */
-.hero{min-height:100vh;justify-content:flex-end;padding:0 20px 28px;background:linear-gradient(to top,rgba(14,28,22,.92) 0%,rgba(14,28,22,.35) 45%,rgba(14,28,22,.1) 100%),url('assets/1.jpg') center top/cover no-repeat;backdrop-filter:none;-webkit-backdrop-filter:none}
+.hero{min-height:100vh;justify-content:flex-end;padding:0 20px 28px;background:linear-gradient(to top,rgba(14,28,22,.92) 0%,rgba(14,28,22,.35) 45%,rgba(14,28,22,.1) 100%),url('assets/5.jpg') center top/cover no-repeat;backdrop-filter:none;-webkit-backdrop-filter:none}
 
 .tag-line{font-family:'Cinzel',serif;font-size:14px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:25px;font-weight:500}
 .title-script{font-family:'Pinyon Script',cursive;font-size:85px;color:var(--rose);margin-bottom:20px;line-height:1.1;text-shadow:0 3px 18px rgba(0,0,0,.6)}
@@ -80,6 +80,8 @@ body.content-active #main-invitation{display:flex}
 .info-title{font-family:'Cinzel',serif;font-size:14px;letter-spacing:4px;line-height:1.4;text-transform:uppercase;color:var(--gold);margin-bottom:15px;font-weight:500}
 .info-data{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--text);margin-bottom:5px;line-height:1.3;text-shadow:0 2px 8px rgba(0,0,0,.85)}
 .info-title,.tag-line,.place-sub,.tl-time,.tl-text{text-shadow:0 2px 8px rgba(0,0,0,.85)}
+.time-pill{display:inline-block;font-family:'Cinzel',serif;font-size:26px;font-weight:600;letter-spacing:4px;color:#2a1620;background:var(--rose);padding:11px 28px;border-radius:30px;margin:16px 0 4px;box-shadow:0 0 28px var(--rose-glow);border:1px solid rgba(255,255,255,.5)}
+.dress-ico{width:84px;height:126px;color:var(--gold);fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 10px rgba(233,163,184,.6))}
 .place-sub{font-family:'Cinzel',serif;font-size:15px;letter-spacing:2px;color:var(--sage);margin:10px 0}
 
 .countdown-container{display:flex;justify-content:center;gap:15px;margin:40px auto;position:relative;z-index:2}
@@ -156,8 +158,6 @@ select.input-line option{background:#1b2b23;color:var(--text)}
 #intro-screen.fade-out{opacity:0;visibility:hidden;pointer-events:none}
 .skip-intro{position:absolute;bottom:24px;right:20px;z-index:3;background:rgba(0,0,0,.35);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:9px 18px;font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;cursor:pointer}
 
-.start-intro{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer;background:linear-gradient(rgba(14,28,22,.35),rgba(14,28,22,.35)),#101c16 url('assets/fondo.jpg') center top/auto 100% no-repeat;transition:opacity .6s ease}
-.start-intro.hide{opacity:0;pointer-events:none}
 /* Spotify */
 .spotify-box{width:100%;max-width:520px;margin:30px auto 0;position:relative;z-index:2;border-radius:12px;box-shadow:0 15px 40px rgba(0,0,0,.6)}
 .spotify-box iframe{display:block}
@@ -181,14 +181,9 @@ select.input-line option{background:#1b2b23;color:var(--text)}
 </button>
 
 <div id="intro-screen">
-  <video id="intro-video" src="assets/entrada.mp4" playsinline preload="auto"></video>
+  <video id="intro-video" src="assets/entrada.mp4" autoplay muted playsinline preload="auto"></video>
   <div class="white"></div>
-  <button class="skip-intro" id="skip-btn" style="display:none" onclick="endIntro()">Saltar</button>
-  <div class="start-intro" id="start-intro" onclick="startIntro()">
-    <div class="env-tag">Mis XV Años</div>
-    <h1 class="env-title">Rebeca Sarai</h1>
-    <div class="hint-text">Toca para comenzar</div>
-  </div>
+  <button class="skip-intro" onclick="endIntro()">Saltar</button>
 </div>
 
 <div id="envelope-screen">
@@ -242,7 +237,7 @@ select.input-line option{background:#1b2b23;color:var(--text)}
       </div>
     </div>
 
-    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Rebeca+Sarai&dates=20261212T020000Z/20261212T090000Z&location=Piedra+Bonita&details=Acompa%C3%B1anos+en+esta+noche+encantada" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Agendar Evento</a>
+    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Rebeca+Sarai&dates=20261212T023000Z/20261212T090000Z&location=Piedra+Bonita&details=Acompa%C3%B1anos+en+esta+noche+encantada" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Agendar Evento</a>
 
     <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top:70px"><img src="assets/3.jpg" alt="Rebeca Sarai" onerror="this.parentElement.style.display='none'"></div>
   </section>
@@ -251,15 +246,15 @@ select.input-line option{background:#1b2b23;color:var(--text)}
   <section class="section-block bg-2">
     <div class="anim-element anim-fade-up delay-1 info-title">Ceremonia Religiosa</div>
     <div class="anim-element anim-fade-up delay-2 info-data">Piedra Bonita</div>
-    <div class="anim-element anim-fade-up delay-3 place-sub">8:00 p.m.</div>
-    <div class="anim-element anim-zoom delay-4 map-box"><iframe class="gmap" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Mapa ceremonia"></iframe></div>
+    <div class="anim-element anim-fade-up delay-3 time-pill">8:30 P.M.</div>
+    <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top:30px"><img src="assets/local.jpg" alt="Piedra Bonita" onerror="this.parentElement.style.display='none'"></div>
     <a href="https://maps.app.goo.gl/fSxzqnoSczRnKgKe7" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Abrir en Maps</a>
 
     <div class="anim-element anim-zoom line-horizontal" style="margin:70px auto 60px"></div>
 
     <div class="anim-element anim-fade-up delay-1 info-title">Recepción</div>
     <div class="anim-element anim-fade-up delay-2 info-data">Piedra Bonita</div>
-    <div class="anim-element anim-fade-up delay-3 place-sub">9:00 p.m.</div>
+    <div class="anim-element anim-fade-up delay-3 time-pill">9:00 P.M.</div>
     <div class="anim-element anim-zoom delay-4 map-box"><iframe class="gmap" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Mapa recepción"></iframe></div>
     <a href="https://maps.app.goo.gl/fSxzqnoSczRnKgKe7" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Abrir en Maps</a>
   </section>
@@ -276,7 +271,7 @@ select.input-line option{background:#1b2b23;color:var(--text)}
   <section class="section-block bg-2">
     <div class="anim-element anim-fade-up delay-1 info-title">Código de Vestimenta</div>
     <div class="anim-element anim-fade-up delay-2 info-data" style="font-family:'Cinzel',serif;font-size:32px;margin:25px 0;letter-spacing:5px;color:var(--gold)">FORMAL / ETIQUETA</div>
-    <div class="anim-element anim-fade-up delay-3 line-divider" style="height:40px"></div>
+    <div class="anim-element anim-fade-up delay-3" style="display:flex;gap:38px;justify-content:center;margin:5px 0 30px"><svg class="dress-ico" viewBox="0 0 60 90" aria-label="Vestido"><path d="M30 16v-3a3 3 0 1 0-3-3"/><path d="M30 16L17 24h26z"/><path d="M24 26L30 36L36 26L38 42L35 52L50 84H10L25 52L22 42Z"/><path d="M25 52H35"/></svg><svg class="dress-ico" viewBox="0 0 60 90" aria-label="Traje"><path d="M30 16v-3a3 3 0 1 0-3-3"/><path d="M30 16L17 24h26z"/><path d="M21 26L13 33V58H47V33L39 26"/><path d="M21 26L30 44L39 26"/><path d="M30 38L28 46L30 56L32 46Z"/><path d="M17 58V84H28L30 66L32 84H43V58"/></svg></div>
     <p class="anim-element anim-fade-up delay-4 body-serif" style="font-size:21px">Con mucho cariño les pedimos dejar el <strong>color verde pistache</strong> libre para que brille la princesa de la noche.</p>
   </section>
 
@@ -297,7 +292,7 @@ select.input-line option{background:#1b2b23;color:var(--text)}
       </div></div></div>
       <div class="roll"></div>
     </div></div>
-    <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top:70px"><img src="assets/5.jpg" alt="Rebeca Sarai" onerror="this.parentElement.style.display='none'"></div>
+    <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top:70px"><img src="assets/1.jpg" alt="Rebeca Sarai" onerror="this.parentElement.style.display='none'"></div>
   </section>
 
   <!-- Galería en vivo -->
@@ -362,7 +357,7 @@ select.input-line option{background:#1b2b23;color:var(--text)}
 
 <script>
 // --- CONFIG ---
-const EVENT_DATE = "Dec 11, 2026 20:00:00";
+const EVENT_DATE = "Dec 11, 2026 20:30:00";
 const PHONE = "529901015698";
 const MAP_SRC = "https://www.google.com/maps?q=Piedra+Bonita&output=embed";
 
@@ -495,13 +490,7 @@ function skipIntro(){
 }
 introVideo.addEventListener('ended', endIntro);
 introVideo.addEventListener('error', skipIntro);
-// El navegador solo permite audio tras un toque del usuario
-function startIntro(){
-  document.getElementById('start-intro').classList.add('hide');
-  document.getElementById('skip-btn').style.display = 'block';
-  introVideo.muted = false;
-  introVideo.play().catch(() => { introVideo.muted = true; introVideo.play().catch(skipIntro); });
-}
+const pr = introVideo.play(); if (pr) pr.catch(skipIntro);
 
 // Pases: ?id=1  |  ?p=4  |  sin parámetros = 10
 let pasesAsignados = 0, nombreInvitado = "Invitado Especial";
