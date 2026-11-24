@@ -206,7 +206,7 @@ select.input-line option{background:#1b2b23;color:var(--text)}
   <section class="section-block hero">
     <div class="anim-element anim-fade-up delay-1 tag-line" style="margin-bottom:10px;font-size:clamp(16px,4.5vw,22px);letter-spacing:7px">Mis XV Años</div>
     <h1 class="anim-element anim-zoom anim-glow delay-2 title-script" style="margin-bottom:0;font-size:clamp(66px,21vw,110px)">Rebeca Sarai</h1>
-      </section>
+  </section>
 
   <!-- Padres + foto 2 -->
   <section class="section-block bg-2">
@@ -492,33 +492,94 @@ introVideo.addEventListener('ended', endIntro);
 introVideo.addEventListener('error', skipIntro);
 const pr = introVideo.play(); if (pr) pr.catch(skipIntro);
 
-// Pases: ?id=1  |  ?p=4  |  sin parámetros = 10
+// ===== PASES NOMINALES (?id=n) =====
+// Lista de invitados: id -> nombre y pases asignados
+const dbInvitados = {
+  "1": { nombre: "Familia Chin Canche", pases: 4 },
+  "2": { nombre: "Familia Chin Cuevas", pases: 3 },
+  "3": { nombre: "Familia Chin Huerta", pases: 3 },
+  "4": { nombre: "Mirian Dorantes", pases: 1 },
+  "5": { nombre: "Familia Chavez Gaburel", pases: 4 },
+  "6": { nombre: "Familia Chavez Manzanero", pases: 6 },
+  "7": { nombre: "Berenice Chavez Pacheco", pases: 3 },
+  "8": { nombre: "Familia Chavez Pacheco", pases: 2 },
+  "9": { nombre: "Familia Bartolo Pacheco", pases: 2 },
+  "10": { nombre: "Familia Pacheco Valladares", pases: 6 },
+  "11": { nombre: "Familia Padilla Jimenez", pases: 9 },
+  "12": { nombre: "Familia Padilla Del Valle", pases: 4 },
+  "13": { nombre: "Familia Jimenez Padilla", pases: 3 },
+  "14": { nombre: "Familia Padilla Escamilla", pases: 2 },
+  "15": { nombre: "Familia Juan Padilla Hernandez", pases: 2 },
+  "16": { nombre: "Dania Padilla Hernandez", pases: 2 },
+  "17": { nombre: "Chritian Padilla Hernandez", pases: 3 },
+  "18": { nombre: "Familia Padilla Camara", pases: 4 },
+  "19": { nombre: "Familia Rosaura Padilla", pases: 3 },
+  "20": { nombre: "Familia Disney Padilla", pases: 3 },
+  "21": { nombre: "Familia Alvarez Guzman", pases: 3 },
+  "22": { nombre: "Mary Lenz", pases: 3 },
+  "23": { nombre: "Familia Sanchez Gutierrez", pases: 4 },
+  "24": { nombre: "Familia Cordova Avendaño", pases: 4 },
+  "25": { nombre: "Familia Angeles Medina", pases: 2 },
+  "26": { nombre: "Familia Torrez De La Cruz", pases: 4 },
+  "27": { nombre: "Familia Heredia Muñonz", pases: 4 },
+  "28": { nombre: "Familia Camara Morales", pases: 3 },
+  "29": { nombre: "Rubi Romero", pases: 2 },
+  "30": { nombre: "Familia Silvia Medina", pases: 2 },
+  "31": { nombre: "Familia Cardenas Dominguez", pases: 4 },
+  "32": { nombre: "Familia Rejo Sanchez", pases: 3 },
+  "33": { nombre: "Celia Herrera Rejon", pases: 3 },
+  "34": { nombre: "Reyna Palmer", pases: 3 },
+  "35": { nombre: "Familia Barrera Padilla", pases: 3 },
+  "36": { nombre: "Lionela Acosta", pases: 1 },
+  "37": { nombre: "Valentina Uc", pases: 1 },
+  "38": { nombre: "Ika Rodiriguez", pases: 1 },
+  "39": { nombre: "Sadahi Sainz", pases: 1 },
+  "40": { nombre: "Ciara Valencia", pases: 1 },
+  "41": { nombre: "Chelsea", pases: 1 },
+  "42": { nombre: "Angelique", pases: 1 },
+  "43": { nombre: "Kenay", pases: 1 },
+  "44": { nombre: "Omar", pases: 1 },
+  "45": { nombre: "Carlos", pases: 1 },
+  "46": { nombre: "Leonardo", pases: 1 },
+  "47": { nombre: "Jonathan", pases: 1 },
+  "48": { nombre: "Victoria", pases: 1 },
+  "49": { nombre: "Andrea", pases: 1 },
+  "50": { nombre: "Raul", pases: 1 },
+  "51": { nombre: "Valeria", pases: 1 },
+  "52": { nombre: "Jimena", pases: 1 },
+  "53": { nombre: "Sofia", pases: 1 },
+  "54": { nombre: "Ana", pases: 1 },
+  "55": { nombre: "Denise", pases: 1 },
+  "56": { nombre: "Maya", pases: 1 },
+  "57": { nombre: "Elisa", pases: 1 },
+  "58": { nombre: "Camila", pases: 1 },
+  "59": { nombre: "Itai Lopez", pases: 1 },
+  "60": { nombre: "Alina Segovia", pases: 1 },
+  "61": { nombre: "Raul Duran", pases: 1 },
+  "62": { nombre: "Manuel Heredia", pases: 1 },
+  "63": { nombre: "Yacqueline", pases: 1 },
+  "64": { nombre: "Esteban Jimenez Coreografo", pases: 6 },
+  "65": { nombre: "Familia Chin Padilla", pases: 6 }
+};
+
 let pasesAsignados = 0, nombreInvitado = "Invitado Especial";
 const urlParams = new URLSearchParams(window.location.search);
-const dbInvitados = {
-  "1": { nombre: "Fam. Ejemplo", pases: 5 },
-  "2": { nombre: "Invitado Especial", pases: 2 }
-};
 const parametroId = urlParams.get('id');
-const parametroPases = urlParams.get('p') || urlParams.get('pases');
 
 if (parametroId && dbInvitados[parametroId]){
   pasesAsignados = dbInvitados[parametroId].pases;
   nombreInvitado = dbInvitados[parametroId].nombre;
   const inp = document.getElementById("rsvp-name");
   inp.value = nombreInvitado; inp.disabled = true;
-} else if (parametroPases && !isNaN(parametroPases)){
-  pasesAsignados = parseInt(parametroPases);
-} else {
-  pasesAsignados = 10;
-}
-
-if (pasesAsignados > 0 && parametroId){
   document.getElementById('pases-section').style.display = 'block';
   document.getElementById('ticket-count').innerText = pasesAsignados;
   document.getElementById('ticket-name').innerText = nombreInvitado;
+} else {
+  // Sin id válido: pase general de 1 lugar
+  pasesAsignados = 1;
 }
 
+// Se puede confirmar menos pases, nunca más de los asignados
 const rsvpStatus = document.getElementById("rsvp-status");
 const rsvpGuests = document.getElementById("rsvp-guests");
 rsvpStatus.addEventListener('change', e => {
@@ -535,8 +596,9 @@ function sendRSVP(){
   const status = rsvpStatus.value, guests = rsvpGuests.value;
   if (name === "" || status === ""){ alert("Por favor, escribe tu nombre y selecciona una opción de asistencia."); return; }
   if (status === "yes" && guests === ""){ alert("Por favor, indica cuántas personas asistirán."); return; }
+  if (status === "yes" && parseInt(guests) > pasesAsignados){ alert("Solo tienes " + pasesAsignados + " pase(s) asignado(s)."); return; }
   const msg = status === "yes"
-    ? `¡Hola! Soy ${name}. Sí, confirmo con gusto mi asistencia a la noche mágica. Seremos ${guests} persona(s) en total.`
+    ? `¡Hola! Soy ${name}. Sí, confirmo con gusto mi asistencia a la noche mágica. Seremos ${guests} persona(s) en total de ${pasesAsignados} pase(s) asignado(s).`
     : `¡Hola! Soy ${name}. Lamentablemente no me será posible asistir a la noche mágica. Agradezco mucho la invitación.`;
   window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
 }
